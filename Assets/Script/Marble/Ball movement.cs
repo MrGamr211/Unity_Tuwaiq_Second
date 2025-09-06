@@ -46,8 +46,8 @@ public class MarblePlayer : MonoBehaviour
     // Movement
     void HandleMovement()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("HorizontalP1");
+        float v = Input.GetAxis("VerticalP1");
 
         // Camera-relative input
         Vector3 forward = cameraTransform.forward;
