@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 10
-  maxSpeed: 10
+  maxSpeed: 7
   jumpForce: 5
   coyoteTime: 0.196
   jumpCooldown: 0.264
