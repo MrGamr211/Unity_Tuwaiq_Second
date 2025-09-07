@@ -1,12 +1,17 @@
 using UnityEngine;
+using UnityEngine.Events; // <- needed for events
 
 public class PressureButton : MonoBehaviour
 {
-    public Renderer buttonRenderer;    // assign in Inspector
+    public Renderer buttonRenderer;
     public Color pressedColor = Color.red;
     public Color defaultColor = Color.gray;
 
     private int playersOnButton = 0;
+
+    [Header("Events")]
+    public UnityEvent onPressed;
+    public UnityEvent onReleased;
 
     void Start()
     {
@@ -22,7 +27,8 @@ public class PressureButton : MonoBehaviour
         {
             playersOnButton++;
             buttonRenderer.material.color = pressedColor;
-            Debug.Log("Player stepped on the button!");
+            if (playersOnButton == 1) // only trigger once
+                onPressed.Invoke();
         }
     }
 
@@ -31,11 +37,11 @@ public class PressureButton : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             playersOnButton--;
-
             if (playersOnButton <= 0)
             {
+                playersOnButton = 0;
                 buttonRenderer.material.color = defaultColor;
-                Debug.Log("Button released!");
+                onReleased.Invoke();
             }
         }
     }
