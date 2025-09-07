@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
-public class MarblePlayer : MonoBehaviour
+public class MarblePlayer1 : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveForce = 10f;
@@ -46,8 +46,8 @@ public class MarblePlayer : MonoBehaviour
     // Movement
     void HandleMovement()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("HorizontalP1");
+        float v = Input.GetAxis("VerticalP1");
 
         // Camera-relative input
         Vector3 forward = cameraTransform.forward;
@@ -106,7 +106,7 @@ public class MarblePlayer : MonoBehaviour
     {
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // reset vertical
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        Debug.Log("Jump!");
+        Debug.Log("Jump! P1");
 
         jumpReady = false;
         StartCoroutine(JumpCooldown());
