@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Marble/Level1.unity
     guid: 1d92cd53c42012346848675cbcc596bc
   - enabled: 1
+    path: Assets/Scenes/Game/Marble/Level2.unity
+    guid: 7b03dfe363937ac4ab789dba58b95dbf
+  - enabled: 1
     path: Assets/Scenes/Game/Marble/Marble Mechanics.unity
     guid: 62e3d5cd400e4c846b471475fb4964bf
   m_configObjects:
