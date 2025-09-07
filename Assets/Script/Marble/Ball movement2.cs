@@ -91,7 +91,7 @@ public class MarblePlayer2 : MonoBehaviour
     // Jump Input
     void HandleJumpInput()
     {
-        if (Input.GetKey(KeyCode.RightControl) && CanJump())
+        if (Input.GetKey(KeyCode.RightAlt) && CanJump())
         {
             DoJump();
         }
