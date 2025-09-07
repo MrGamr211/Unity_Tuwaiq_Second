@@ -121,4 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9765792977fdbf458fa08631814cacd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Sandbox
+  SceneName: Marble Mechanics
+  playersOnTrigger: 2
