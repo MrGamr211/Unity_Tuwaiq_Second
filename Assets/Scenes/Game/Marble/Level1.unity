@@ -7725,6 +7725,10 @@ PrefabInstance:
       propertyPath: SceneName
       value: Marble Mechanics
       objectReference: {fileID: 0}
+    - target: {fileID: 3582637580901216275, guid: 80c91d6d9f5e50a41ad300d4e7c5f8f5, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8186782000919570015, guid: 80c91d6d9f5e50a41ad300d4e7c5f8f5, type: 3}
       propertyPath: m_LocalScale.x
       value: 4.17

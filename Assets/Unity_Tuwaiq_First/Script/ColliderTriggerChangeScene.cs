@@ -14,20 +14,29 @@ public class ColliderTriggerChangeScene : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player") 
+        if (other.tag == "Player")
         {
             players++;
             if (players == playersOnTrigger) SceneManager.LoadScene(SceneName);
         }
     }
 
-// this code are taken from this video (https://youtube.com/shorts/qCKmtIKmRyQ?si=Vb5KhQPRKor-bghq)
-    // public void LoadSceneByName()
-    // {
-    //     SceneManager.LoadScene("SandBox");
-    // }
-    // public void LoadNextInBuild()
-    // {
-    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    // }
+public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            players--;
+            if (players <= 0) players = 0;
+        }
+  }
+
+  // this code are taken from this video (https://youtube.com/shorts/qCKmtIKmRyQ?si=Vb5KhQPRKor-bghq)
+  // public void LoadSceneByName()
+  // {
+  //     SceneManager.LoadScene("SandBox");
+  // }
+  // public void LoadNextInBuild()
+  // {
+  //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+  // }
 }
