@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [Header("Game State")]
     public bool isOvertime = false;
 
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        NotifyLivesChanged();
     }
 
     // Call this at the end of every mini-game
@@ -60,6 +63,9 @@ public class GameManager : MonoBehaviour
 
         // 4. Check for overtime or game over
         CheckGameEnd();
+
+        // Update UI
+        NotifyLivesChanged();
     }
 
     private void CheckGameEnd()
@@ -93,6 +99,7 @@ public class GameManager : MonoBehaviour
         string[] miniGames = { "MiniGame1" };
         string chosen = miniGames[Random.Range(0, miniGames.Length)];
         SceneManager.LoadScene(chosen);
+        NotifyLivesChanged();
     }
 
     public void LoadMenu()
@@ -102,6 +109,17 @@ public class GameManager : MonoBehaviour
         player2Lives = 3;
         isOvertime = false;
 
+        // Update UI
+        NotifyLivesChanged();
+
         SceneManager.LoadScene("MainMenu");
     }
+
+    public static event System.Action<int, int> OnLivesChanged;
+
+    private void NotifyLivesChanged()
+    {
+        OnLivesChanged?.Invoke(player1Lives, player2Lives);
+    }
+
 }
