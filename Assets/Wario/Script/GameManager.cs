@@ -54,6 +54,10 @@ public class GameManager : MonoBehaviour
             Debug.Log("P2 steals life from P1!");
         }
 
+        // Clamp lives so they never go negative
+        player1Lives = Mathf.Max(0, player1Lives);
+        player2Lives = Mathf.Max(0, player2Lives);
+
         // 4. Check for overtime or game over
         CheckGameEnd();
     }
@@ -65,7 +69,6 @@ public class GameManager : MonoBehaviour
             // Both dead → Overtime
             isOvertime = true;
             Debug.Log("OVERTIME STARTS!");
-            // reload another mini-game (placeholder)
             LoadRandomMiniGame();
         }
         else if (player1Lives <= 0)
@@ -80,7 +83,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // keep game going → next mini-game
             LoadRandomMiniGame();
         }
     }
@@ -88,14 +90,18 @@ public class GameManager : MonoBehaviour
     // Dummy placeholder — replace with your selector later
     private void LoadRandomMiniGame()
     {
-        // Example: assumes scenes are named "MiniGame1", "MiniGame2"
-        string[] miniGames = { "MiniGame1", "MiniGame2" };
+        string[] miniGames = { "MiniGame1" };
         string chosen = miniGames[Random.Range(0, miniGames.Length)];
         SceneManager.LoadScene(chosen);
     }
 
     public void LoadMenu()
     {
+        // Reset everything when going back to menu
+        player1Lives = 3;
+        player2Lives = 3;
+        isOvertime = false;
+
         SceneManager.LoadScene("MainMenu");
     }
 }
