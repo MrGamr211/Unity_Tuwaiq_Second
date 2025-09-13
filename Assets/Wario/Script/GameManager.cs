@@ -5,6 +5,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [Header("UI Prefabs")]
+    public GameObject gameOverUIPrefab;
+
+
     [Header("Lives")]
     public int player1Lives = 3;
     public int player2Lives = 3;
@@ -80,18 +84,19 @@ public class GameManager : MonoBehaviour
         else if (player1Lives <= 0)
         {
             Debug.Log("Player 2 Wins!");
-            LoadMenu();
+            ShowGameOverUI("Player 2");
         }
         else if (player2Lives <= 0)
         {
             Debug.Log("Player 1 Wins!");
-            LoadMenu();
+            ShowGameOverUI("Player 1");
         }
         else
         {
             LoadRandomMiniGame();
         }
     }
+
 
     // Dummy placeholder — replace with your selector later
     private void LoadRandomMiniGame()
@@ -114,6 +119,28 @@ public class GameManager : MonoBehaviour
 
         SceneManager.LoadScene("MainMenu");
     }
+
+    private void ShowGameOverUI(string winner)
+{
+    if (gameOverUIPrefab != null)
+    {
+        GameObject ui = Instantiate(gameOverUIPrefab);
+        // Make sure it spawns under a Canvas in the scene
+        Canvas canvas = FindObjectOfType<Canvas>();
+        if (canvas != null)
+        {
+            ui.transform.SetParent(canvas.transform, false);
+        }
+
+        // Update the text
+        GameOverUI gameOverUI = ui.GetComponent<GameOverUI>();
+        if (gameOverUI != null)
+        {
+            gameOverUI.ShowWinner(winner);
+        }
+    }
+}
+
 
     public static event System.Action<int, int> OnLivesChanged;
 
