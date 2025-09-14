@@ -1,0 +1,83 @@
+{
+    "version": 1,
+    "name": "Wario",
+    "maps": [
+        {
+            "name": "Players",
+            "id": "ec928f7b-9a3f-4948-9fdd-8cadbc7daa64",
+            "actions": [
+                {
+                    "name": "SpamPlayer1",
+                    "type": "Button",
+                    "id": "b6662ccf-2300-414f-be05-5c02d725300f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SpamPlayer2",
+                    "type": "Button",
+                    "id": "53e46bda-96ec-4c23-9c3a-d1bbad8322ac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "055b2490-2c60-49cb-a935-d9a26aaea53b",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpamPlayer1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c8db513e-a040-45da-b39e-1b1ce7eecf30",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpamPlayer2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player2 [Not Active]",
+            "id": "15c55fe2-0c75-4ebf-8044-c14f192c3af5",
+            "actions": [
+                {
+                    "name": "Spam",
+                    "type": "Button",
+                    "id": "e6390843-f3a3-4a2e-b073-fdb969d8bd56",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9dca81b6-6a00-49ad-a1ec-85984b96d2fa",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Spam",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
