@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,12 +13,17 @@ public class GameManager : MonoBehaviour
     [Header("Lives")]
     public int player1Lives = 3;
     public int player2Lives = 3;
+    public int PlayersLiveMemory = 3;
 
     [Header("Game State")]
     public bool isOvertime = false;
 
 
-
+    public void ResetLives()
+    {
+        player1Lives = PlayersLiveMemory;
+        player2Lives = PlayersLiveMemory;   
+    }
     private void Awake()
     {
         if (Instance == null)
@@ -110,36 +116,45 @@ public class GameManager : MonoBehaviour
     public void LoadMenu()
     {
         // Reset everything when going back to menu
-        player1Lives = 3;
-        player2Lives = 3;
+        player1Lives = PlayersLiveMemory;
+        player2Lives = PlayersLiveMemory;
         isOvertime = false;
 
         // Update UI
         NotifyLivesChanged();
-
+        float i = 1;
+        while (i >= 0f)
+        {
+            if (i <= 0f)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
+            else i -= Time.deltaTime; Debug.Log(i);
+        }
         SceneManager.LoadScene("MainMenu");
     }
 
-    private void ShowGameOverUI(string winner)
-{
-    if (gameOverUIPrefab != null)
-    {
-        GameObject ui = Instantiate(gameOverUIPrefab);
-        // Make sure it spawns under a Canvas in the scene
-        Canvas canvas = FindObjectOfType<Canvas>();
-        if (canvas != null)
-        {
-            ui.transform.SetParent(canvas.transform, false);
-        }
 
-        // Update the text
-        GameOverUI gameOverUI = ui.GetComponent<GameOverUI>();
-        if (gameOverUI != null)
+    private void ShowGameOverUI(string winner)
+    {
+        if (gameOverUIPrefab != null)
         {
-            gameOverUI.ShowWinner(winner);
+            GameObject ui = Instantiate(gameOverUIPrefab);
+            // Make sure it spawns under a Canvas in the scene
+            Canvas canvas = FindObjectOfType<Canvas>();
+            if (canvas != null)
+            {
+                ui.transform.SetParent(canvas.transform, false);
+            }
+
+            // Update the text
+            GameOverUI gameOverUI = ui.GetComponent<GameOverUI>();
+            if (gameOverUI != null)
+            {
+                gameOverUI.ShowWinner(winner);
+            }
         }
     }
-}
 
 
     public static event System.Action<int, int> OnLivesChanged;
