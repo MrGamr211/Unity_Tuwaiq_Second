@@ -7,7 +7,8 @@ public class ColliderTriggerChangeScene2D : MonoBehaviour
 {
     public string SceneName;
     public int playersOnTrigger = 2;
-    private int players = 0;
+    public int players = 0;
+    public static event System.Action<int> OnPlayersChanged;
     void Start()
     {
     }
@@ -17,7 +18,7 @@ public class ColliderTriggerChangeScene2D : MonoBehaviour
         if (other.tag == "Player")
         {
             players++;
-            if (players == playersOnTrigger) SceneManager.LoadScene(SceneName);
+            //if (players == playersOnTrigger) SceneManager.LoadScene(SceneName);
         }
     }
 

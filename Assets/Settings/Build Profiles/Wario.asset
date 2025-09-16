@@ -21,11 +21,13 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Wario/Scene/MainMenu.unity
+    m_path: Assets/Wario/Scene/Old Project/MainMenu.unity
   - m_enabled: 1
-    m_path: Assets/Wario/Scene/MiniGame1.unity
+    m_path: Assets/Wario/Scene/Old Project/MiniGame1.unity
   - m_enabled: 1
     m_path: Assets/Wario/Scene/test player.unity
+  - m_enabled: 1
+    m_path: Assets/Wario/Scene/MainMenu 1.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []
